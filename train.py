@@ -57,7 +57,10 @@ print(f"\nBest model by R2: {best}  (values are in $100,000s)")
 # 3. Plots: actual vs predicted + feature importances of the best model
 fig, axes = plt.subplots(1, 2, figsize=(13, 5))
 pred = fitted[best].predict(X_test)
-axes[0].scatter(y_test, pred, alpha=0.2, s=8)
+# subsample for the plot so the SVG stays small
+plot_idx = y_test.sample(n=1500, random_state=42).index
+axes[0].scatter(y_test.loc[plot_idx], pd.Series(pred, index=y_test.index).loc[plot_idx],
+                alpha=0.3, s=8, rasterized=True)
 axes[0].plot([0, 5], [0, 5], "r--")
 axes[0].set_xlabel("actual value ($100k)")
 axes[0].set_ylabel("predicted value ($100k)")
