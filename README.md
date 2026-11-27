@@ -1,6 +1,6 @@
 # California Housing Price Prediction
 
-A practice project from my machine learning course. It predicts the
+Practice project built with AI assistance on a public dataset. It predicts the
 median house value of a California district from census attributes, and
 includes a Streamlit web app for interactive predictions.
 
